@@ -1,0 +1,50 @@
+#include<stdio.h>  
+Int main()  
+{  
+ Int I,j,num,time,remain,flag=0,time_quantum;  
+  Int avgwt=0,avgtt=0,at[10],bt[10],rt[10];  
+  Printf(“Enter Total Process:\t “);  
+  Scanf(“%d”,&num);  
+  Remain=num;  
+  For(i=0;i<num;i++)  
+  {  
+    Printf(“Enter Arrival Time and Burst Time for Process Process Number %d :”,i+1);  
+    Scanf(“%d”,&at[i]);  
+    Scanf(“%d”,&bt[i]);  
+    Rt[i]=bt[i];  
+  }  
+  Printf(“Enter Time Quantum:\t”);  
+  Scanf(“%d”,&time_quantum);  
+  Printf(“\nP\t BT\t AT\t TT\t WT\t\n\n”);  
+  For(time=0,i=0;remain!=0;)  
+  {  
+    If(rt[i]<=time_quantum && rt[i]>0)  
+    {  
+      Time+=rt[i];  
+      Rt[i]=0;  
+      Flag=1;  
+    }  
+    Else if(rt[i]>0)  
+    {  
+      Rt[i]-=time_quantum;  
+      Time+=time_quantum;  
+    }  
+    If(rt[i]==0 && flag==1)  
+    {  
+      Remain--;  
+      Printf(“\np[%d]\t\t %d\t\t %d\t\t %d\t\t\t %d\n”,at[i],bt[i],i+1,time-at[i],time-at[i]-bt[i]);  
+      Avgwt+=time-at[i]-bt[i];  
+      Avgtt+=time-at[i];  
+      Flag=0;  
+    }  
+    If(i==num-1)  
+      I=0;  
+    Else if(at[i+1]<=time)  
+      I++;  
+    Else  
+      I=0;  
+  }  
+  Printf(“\nAverage Waiting Time= %f\n”,avgwt*1.0/num);  
+  Printf(“Average Turnaround Time = %f”,avgtt*1.0/num);   
+  Return 0;  
+}
