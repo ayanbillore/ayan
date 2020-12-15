@@ -1,0 +1,44 @@
+#include<pthread.h>
+#include<stdio.h>
+#include<time.h>
+
+unsigned long sum[4];
+
+void *thread_fn(void *arg){
+    long id=(long)arg;
+    int start = id*4500;
+    int i = 0;
+
+    while(i<4500)
+    {
+        sum[id]+=(i+start); 
+        i++;
+    }
+    return NULL;
+}
+int main(){
+    pthread_t t1, t2, t3, t4, t5, t6;
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
+    pthread_create(&t1,NULL,thread_fn,(void *)0);
+    pthread_create(&t2,NULL,thread_fn,(void *)1);
+    pthread_create(&t3,NULL,thread_fn,(void *)2);
+    pthread_create(&t4,NULL,thread_fn,(void *)3);
+    pthread_create(&t5,NULL,thread_fn,(void *)4);
+    pthread_create(&t6,NULL,thread_fn,(void *)5);
+    end = clock();
+    pthread_join(t1,NULL);
+    pthread_join(t2,NULL);
+    pthread_join(t3,NULL);
+    pthread_join(t4,NULL);
+    pthread_join(t5,NULL);
+    pthread_join(t6,NULL);
+    
+
+    printf("%lu/n", sum[0]+sum[1]+sum[2]+sum[3]+sum[4]+sum[5]);
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Thread took %f seconds to execute \n" , cpu_time_used);
+    return 0;
+
+}
