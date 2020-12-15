@@ -1,0 +1,61 @@
+#include<iostream> 
+Using namespace std; 
+Int main() 
+{ 
+    Int bt[20],p[20],wt[20],tat[20],pr[20],I,j,num,total=0,pos,temp, avg_wt,avg_tat; 
+    Cout<<”Enter Total Number of Process:”; 
+    Cin>>num; 
+Cout<<”\nEnter Burst Time and Priority\n”; 
+    For(i=0;i<num;i++) 
+    { 
+        Cout<<”\nP[“<<i+1<<”]\n”; 
+        Cout<<”Burst Time:”; 
+        Cin>>bt[i]; 
+        Cout<<”Priority:”; 
+        Cin>>pr[i]; 
+        P[i]=i+1;            
+    } 
+    For(i=0;i<num;i++) 
+    { 
+        Pos=I; 
+        For(j=i+1;j<num;j++) 
+        { 
+            If(pr[j]<pr[pos]) 
+                Pos=j; 
+        } 
+  Temp=pr[i]; 
+  Pr[i]=pr[pos]; 
+  Pr[pos]=temp; 
+  
+        Temp=bt[i]; 
+        Bt[i]=bt[pos]; 
+        Bt[pos]=temp; 
+  
+        Temp=p[i]; 
+        P[i]=p[pos]; 
+        P[pos]=temp; 
+    } 
+ Wt[0]=0;            
+    For(i=1;i<num;i++) 
+    { 
+        Wt[i]=0; 
+        For(j=0;j<I;j++) 
+            Wt[i]+=bt[j]; 
+            Total+=wt[i]; 
+    } 
+    Avg_wt=total/num;       
+    Total=0; 
+  
+    Cout<<”\nP\t   BT\t   WT\t   TT”; 
+    For(i=0;i<num;i++) 
+    { 
+        Tat[i]=bt[i]+wt[i];     
+        Total+=tat[i]; 
+        Cout<<”\nP[“<<p[i]<<”]\t\t  “<<bt[i]<<”\t\t “<<wt[i]<<”\t\t\t “<<tat[i]; 
+    } 
+  
+    Avg_tat=total/num;    
+    Cout<<”\n\nAverage Waiting Time=”<<avg_wt; 
+    Cout<<”\nAverage Turnaround Time=”<<avg_tat; 
+     Return 0; 
+}
