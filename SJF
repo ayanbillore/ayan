@@ -1,0 +1,63 @@
+#include<stdio.h> 
+Int main() 
+{ 
+Int bt[10],p[10],wt[10],tat[10],I,j,num,total=0,pos,temp; 
+Float avgwt,avgtat; 
+Printf(“Enter number of process:”); 
+Scanf(“%d”,&num); 
+ 
+Printf(“\nEnter Burst Time:\n”); 
+For(i=0;i<num;i++) 
+{ 
+Printf(“p%d:”,i+1); 
+Scanf(“%d”,&bt[i]); 
+P[i]=i+1; 
+} 
+ 
+For(i=0;i<num;i++) 
+{ 
+Pos=I; 
+For(j=i+1;j<num;j++) 
+{ 
+If(bt[j]<bt[pos]) 
+Pos=j; 
+} 
+ 
+Temp=bt[i]; 
+Bt[i]=bt[pos]; 
+Bt[pos]=temp; 
+ 
+Temp=p[i]; 
+P[i]=p[pos]; 
+P[pos]=temp; 
+} 
+ 
+Wt[0]=0; 
+ 
+ 
+For(i=1;i<num;i++) 
+{ 
+Wt[i]=0; 
+For(j=0;j<I;j++) 
+Wt[i]+=bt[j]; 
+ 
+Total+=wt[i]; 
+} 
+ 
+Avgwt=(float)total/num; 
+Total=0; 
+ 
+Printf(“\nP\t BT\t WT\t TT\t”); 
+For(i=0;i<num;i++) 
+{ 
+Tat[i]=bt[i]+wt[i]; 
+Total+=tat[i]; 
+Printf(“\np%d\t\t %d\t\t\t %d\t\t\t%d”,p[i],bt[i],wt[i],tat[i]); 
+} 
+
+ 
+Avgtat=(float)total/num; 
+Printf(“\nAverage Waiting Time=%f”,avgwt,”ms”); 
+Printf(“\nAverage Turnaround Time=%f\n”,avgtat,”ms”); 
+
+}
